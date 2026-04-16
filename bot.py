@@ -184,7 +184,7 @@ class PipelineWorker(discord.Client):
                 timer_started = False
                 while True:
                     steps, job_status = await self.get_job_steps(run_id)
-                    master_step = next((s for s in steps if s['name'] == 'Process Master Loop (Batch Parsing, FFmpeg, Metadata)'), None)
+                    master_step = next((s for s in steps if s['name'] == 'Compile Pipeline Worker (Phase 2 - Muxing & Execution)'), None)
                     
                     if master_step and master_step['status'] in ['in_progress', 'completed']:
                         print("⏱️ [CHECKPOINT 3] Master Loop started. Commencing 750s overlap countdown...")
