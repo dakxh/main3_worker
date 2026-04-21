@@ -197,7 +197,7 @@ class PipelineWorker(discord.Client):
                     await asyncio.sleep(15)
                     
                 if timer_started:
-                    await asyncio.sleep(750)
+                    await asyncio.sleep(1050)
                     print("🟢 [SUCCESS] 750s passed. Marking link as safely processing.")
                     
                     # --- CLEANUP PHASE ---
