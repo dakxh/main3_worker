@@ -12,7 +12,7 @@ MOVIE_QUEUE_CHANNEL_ID = int(os.getenv("MOVIE_QUEUE_CHANNEL_ID")) # e.g., 123456
 GITHUB_PAT = os.getenv("GITHUB_PAT") # Classic Token with 'repo' scope
 REPO_OWNER = os.getenv("REPO_OWNER") # e.g., "YourUsername"
 REPO_NAME = os.getenv("REPO_NAME") # e.g., "YourRepo"
-WORKFLOW_FILE = "main31.yml" # Name of the lobotomized workflow file
+WORKFLOW_FILE = "main3.yml" # Name of the lobotomized workflow file
 
 API_BASE = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/actions"
 HEADERS = {
