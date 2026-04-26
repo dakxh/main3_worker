@@ -131,7 +131,7 @@ class PipelineWorker(discord.Client):
                 print(f"🔗 Attached to Run ID: {run_id}")
                 
                 # --- STATE 1: THE 5-MINUTE WATCHDOG ---
-                timeout_time = asyncio.get_event_loop().time() + 500 # 5 minutes
+                timeout_time = asyncio.get_event_loop().time() + 300 # 5 minutes
                 compile_started = False
                 
                 while asyncio.get_event_loop().time() < timeout_time:
