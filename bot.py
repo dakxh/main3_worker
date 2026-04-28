@@ -131,16 +131,11 @@ class PipelineWorker(discord.Client):
                 print(f"🔗 Attached to Run ID: {run_id}")
                 
                 # --- STATE 1: THE 5-MINUTE WATCHDOG ---
-                timeout_time = asyncio.get_event_loop().time() + 60 # 5 minutes
+                timeout_time = asyncio.get_event_loop().time() + 120 # 5 minutes
                 compile_started = False
                 
                 while asyncio.get_event_loop().time() < timeout_time:
-                    steps, job_status = await self.get_job_steps(run_id)
-                    
-                    if job_status == "completed":
-                        print("❌ Job crashed or finished too early during setup.")
-                        break # Break out of watchdog to trigger a retry
-                    
+                    steps, job_status = await self.get_job_steps(run_id)                    
                     # Look for our Checkpoint 1 step
                     ack_step = next((s for s in steps if s['name'] == 'Acknowledge Payload'), None)
                     if ack_step and ack_step['status'] in ['in_progress', 'completed']:
@@ -197,8 +192,8 @@ class PipelineWorker(discord.Client):
                     await asyncio.sleep(15)
                     
                 if timer_started:
-                    await asyncio.sleep(1)
-                    print("🟢 [SUCCESS] 750s passed. Marking link as safely processing.")
+                    await asyncio.sleep(400)
+                    print("🟢 [SUCCESS] 400s passed. Marking link as safely processing.")
                     
                     # --- CLEANUP PHASE ---
                     try:
