@@ -131,7 +131,7 @@ class PipelineWorker(discord.Client):
                 print(f"🔗 Attached to Run ID: {run_id}")
                 
                 # --- STATE 1: THE 5-MINUTE WATCHDOG ---
-                timeout_time = asyncio.get_event_loop().time() + 280 # 5 minutes
+                timeout_time = asyncio.get_event_loop().time() + 300 # 5 minutes
                 compile_started = False
                 
                 while asyncio.get_event_loop().time() < timeout_time:
@@ -192,8 +192,8 @@ class PipelineWorker(discord.Client):
                     await asyncio.sleep(15)
                     
                 if timer_started:
-                    await asyncio.sleep(100)
-                    print("🟢 [SUCCESS] 100s passed. Marking link as safely processing.")
+                    await asyncio.sleep(300)
+                    print("🟢 [SUCCESS] 300s passed. Marking link as safely processing.")
                     
                     # --- CLEANUP PHASE ---
                     try:
